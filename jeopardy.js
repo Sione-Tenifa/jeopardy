@@ -1,51 +1,17 @@
-// categories is the main data structure for the app; it looks like this:
-
-//  [
-//    { title: "Math",
-//      clues: [
-//        {question: "2+2", answer: 4, showing: null},
-//        {question: "1+1", answer: 2, showing: null}
-//        ...
-//      ],
-//    },
-//    { title: "Literature",
-//      clues: [
-//        {question: "Hamlet Author", answer: "Shakespeare", showing: null},
-//        {question: "Bell Jar Author", answer: "Plath", showing: null},
-//        ...
-//      ],
-//    },
-//    ...
-//  ]
-
-// /   /** Get NUM_CATEGORIES random category from API.
-// *
-// * Returns array of category ids
-// */
-
-/** Return object with data about a category:
- *
- *  Returns { title: "Math", clues: clue-array }
- *
- * Where clue-array is:
- *   [
- *      {question: "Hamlet Author", answer: "Shakespeare", showing: null},
- *      {question: "Bell Jar Author", answer: "Plath", showing: null},
- *      ...
- *   ]
- */
 
 
+document.getElementById("myBtn").addEventListener("click", setupAndStart)
 let categories = [];
 
 
 async function getCategoryIds() {
+    console.log("clickd")
     let res = await axios.get(`http://jservice.io/api/random?count=6`)
     let NUM_CATEGORIES = res.data.map(catId => ({
         id: catId.category.id
       }));
     getCategory(NUM_CATEGORIES)
-    fillTable()
+    
 }
 
 
@@ -135,22 +101,8 @@ function fillTable() {
         $jeoBody4.append($body4)
         $jeoBody5.append($body5)
   
-
-
-
-                        //  <td>${data.cluesArray[1].question}</td>
-                //  <td>${data.cluesArray[2].question}</td>
-                //  <td>${data.cluesArray[3].question}</td>
-                //  <td>${data.cluesArray[4].question}</td>
         }
-        // for (i = 0; i < 6; i++) {
-        //     let $item = $(
-        //         `
-        //         <td>${data.cluesArray}
-        //         `        
-        //     )
-        //     $jeoBody.append($item)
-        //  }
+ 
     }
                 
                 
@@ -188,8 +140,9 @@ function fillTable() {
      * - create HTML table
      * */
     
-    async function setupAndStart() {
-        
+    function setupAndStart() {
+        getCategoryIds()
+        fillTable()
     }
     
     /** On click of start / restart button, set up game. */
