@@ -143,6 +143,7 @@ function fillTable() {
     function setupAndStart() {
         getCategoryIds()
         fillTable()
+        
     }
     
     /** On click of start / restart button, set up game. */
