@@ -6,27 +6,27 @@ let categories = [];
 
 
 
-function cluesEvent(){
-    const clues = document.querySelectorAll('.clue');
-    clues.forEach(function(card){
-        const id = card.dataset.id // 1 or 2
-        console.log("for loop")
-        let otherCardId;
-        if(id == 1){
-          otherCardId = 2;
-        } else if (id == 2) {
-          otherCardId = 3;
-        }
+// function cluesEvent(){
+//     const clues = document.querySelectorAll('.clue');
+//     clues.forEach(function(card){
+//         const id = card.dataset.id // 1 or 2
+//         console.log("for loop")
+//         let otherCardId;
+//         if(id == 1){
+//           otherCardId = 2;
+//         } else if (id == 2) {
+//           otherCardId = 3;
+//         }
         
-        if(id == 3) return;
+//         if(id == 3) return;
        
-        card.addEventListener('click', function(){
-          console.log("event")
-          card.style.display = 'none';
-          document.querySelector('.clue-' + otherCardId).style.display = 'block';
-        });
-      })
-}
+//         card.addEventListener('click', function(){
+//           console.log("event")
+//           card.style.display = 'none';
+//           document.querySelector('.clue-' + otherCardId).style.display = 'block';
+//         });
+//       })
+// }
 
 
 
@@ -172,7 +172,7 @@ function fillTable() {
     function setupAndStart() {
         getCategoryIds()
         fillTable()
-        cluesEvent()
+        // cluesEvent()
     }
     
     /** On click of start / restart button, set up game. */
