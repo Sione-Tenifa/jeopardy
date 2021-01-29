@@ -1,7 +1,33 @@
 
 
 document.getElementById("myBtn").addEventListener("click", setupAndStart)
+
 let categories = [];
+
+
+
+function cluesEvent(){
+    const clues = document.querySelectorAll('.clue');
+    clues.forEach(function(card){
+        const id = card.dataset.id // 1 or 2
+        console.log("for loop")
+        let otherCardId;
+        if(id == 1){
+          otherCardId = 2;
+        } else if (id == 2) {
+          otherCardId = 3;
+        }
+        
+        if(id == 3) return;
+       
+        card.addEventListener('click', function(){
+          console.log("event")
+          card.style.display = 'none';
+          document.querySelector('.clue-' + otherCardId).style.display = 'block';
+        });
+      })
+}
+
 
 
 async function getCategoryIds() {
@@ -66,8 +92,9 @@ function fillTable() {
         
         let $body1 = $(
             `
-            <td>${data.cluesArray[0].question}</td>
-            
+            <td class="clue clue-1" data-id="1" >?</td>
+            <td class="clue clue-2" data-id="2" >${data.cluesArray[0].question}</td>
+            <td class="clue clue-3" data-id="3" >${data.cluesArray[0].answer}</td>
             `
         )
         let $body2 = $(
@@ -118,6 +145,8 @@ function fillTable() {
      * */
     
     function handleClick(evt) {
+       
+   
     }
     
     /** Wipe the current Jeopardy board, show the loading spinner,
@@ -143,7 +172,7 @@ function fillTable() {
     function setupAndStart() {
         getCategoryIds()
         fillTable()
-        
+        cluesEvent()
     }
     
     /** On click of start / restart button, set up game. */
@@ -154,24 +183,7 @@ function fillTable() {
     
     // TODO
     
-    // const cards = document.querySelectorAll('.card');
-    // cards.forEach(function(card){
-    //   const id = card.dataset.id // 1 or 2
-     
-    //   let otherCardId;
-    //   if(id == 1){
-    //     otherCardId = 2;
-    //   } else if (id == 2) {
-    //     otherCardId = 3;
-    //   }
-      
-    //   if(id == 3) return;
-     
-    //   card.addEventListener('click', function(){
-    //     card.style.display = 'none';
-    //     document.querySelector('.card-' + otherCardId).style.display = 'block';
-    //   });
-    // })
+
 
              
 

@@ -22,7 +22,8 @@ tr{
   height: 200px;
 }
 
-.card {
+
+.clue {
   display: none;
   color: white;
   font-size: 32px;
@@ -30,16 +31,16 @@ tr{
   height: 100%;
 }
 
-.card-1 {
+.clue-1 {
   background: red;
-  display: block;
+  display: inline-block;
 }
 
-.card-2 {
+.clue-2 {
   background: blue;
 }
 
-.card-3 {
+.clue-3 {
   background: green;
 }
 
