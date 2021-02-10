@@ -73,7 +73,7 @@ async function getCategory(catId) {
  */
 
 async function fillTable() {
-    // $("#board thead").empty();
+     $("#board thead").empty();
 
     let $tr = $("<tr>");
     for (let catId = 0; catId < numCat; catId++) {
@@ -132,6 +132,26 @@ async function fillTable() {
     //             document.querySelector('.clue-' + otherCardId).style.display = 'block';
     //         });
     //    })
+
+    let id = evt.target.id;
+    let [catId, clueId] = id.split("-");
+    let clue = categories[catId].cluesArray[clueId];
+  
+    let msg;
+  
+    if (!clue.showing) {
+      msg = clue.question;
+      clue.showing = "question";
+    } else if (clue.showing === "question") {
+      msg = clue.answer;
+      clue.showing = "answer";
+    } else {
+      // already showing answer; ignore
+      return
+    }
+  
+    // Update text of cell
+    $(`#${catId}-${clueId}`).html(msg);
    
     }
     
