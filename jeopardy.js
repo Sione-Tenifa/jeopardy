@@ -57,6 +57,7 @@ async function getCategory(catId) {
                 categories.push(clueObj)
             }   
         })
+        fillTable()
 }
             
 
@@ -72,7 +73,7 @@ async function getCategory(catId) {
  */
 
 async function fillTable() {
-    $("#board thead").empty();
+    // $("#board thead").empty();
 
     let $tr = $("<tr>");
     for (let catId = 0; catId < numCat; catId++) {
@@ -80,17 +81,17 @@ async function fillTable() {
       console.log(categories[catId].title)
       $tr.append($("<th>").text(categories[catId].title));
     }
-    $("#jeopardy thead").append($tr);
+    $("#board thead").append($tr);
   
     // Add rows with questions for each category
-    $("#jeopardy tbody").empty();
+    $("#board tbody").empty();
     for (let clueId = 0; clueId < numClues; clueId++) {
       let $tr = $("<tr>");
 
       for (let catId = 0; catId < numCat; catId++) {
         $tr.append($("<td>").attr("id", `${catId}-${clueId}`).text("?"));
       }
-      $("#jeopardy tbody").append($tr);
+      $("#board tbody").append($tr);
     }
  
 }
@@ -159,7 +160,7 @@ async function fillTable() {
         categories = [];
 
 
-        fillTable()
+        
         // cluesEvent()
     }
 
@@ -173,7 +174,7 @@ async function fillTable() {
     // TODO
     $(async function () {
         setupAndStart();
-        $("#jeopardy").on("click", "td", handleClick);
+        $("#board").on("click", "td", handleClick);
       }
     );
     
