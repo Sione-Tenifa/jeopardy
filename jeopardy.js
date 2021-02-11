@@ -61,16 +61,6 @@ async function getCategory(catId) {
 }
             
 
-        
-        
-
-/** Fill the HTML table#jeopardy with the categories & cells for questions.
- *
- * - The <thead> should be filled w/a <tr>, and a <td> for each category
- * - The <tbody> should be filled w/NUM_QUESTIONS_PER_CAT <tr>s,
- *   each with a question for each category in a <td>
- *   (initally, just show a "?" where the question/answer would go.)
- */
 
 async function fillTable() {
      $("#board thead").empty();
@@ -83,7 +73,6 @@ async function fillTable() {
     }
     $("#board thead").append($tr);
   
-    // Add rows with questions for each category
     $("#board tbody").empty();
     for (let clueId = 0; clueId < numClues; clueId++) {
       let $tr = $("<tr>");
@@ -96,16 +85,7 @@ async function fillTable() {
  
 }
                 
-                                
-            
-        
-    /** Handle clicking on a clue: show the question or answer.
-     *
-     * Uses .showing property on clue to determine what to show:
-     * - if currently null, show question & set .showing to "question"
-     * - if currently "question", show answer & set .showing to "answer"
-     * - if currently "answer", ignore click
-     * */
+
     
     function handleClick(evt) {
        console.log("clue Clicked")
@@ -146,34 +126,15 @@ async function fillTable() {
       msg = clue.answer;
       clue.showing = "answer";
     } else {
-      // already showing answer; ignore
       return
     }
   
-    // Update text of cell
+    
     $(`#${catId}-${clueId}`).html(msg);
    
     }
     
-    /** Wipe the current Jeopardy board, show the loading spinner,
-     * and update the button used to fetch data.
-     */
-    
-    function showLoadingView() {
-    
-    }
-    
-    /** Remove the loading spinner and update the button used to fetch data. */
-    
-    function hideLoadingView() {
-    }
-    
-    /** Start game:
-     *
-     * - get random category Ids
-     * - get data for each category
-     * - create HTML table
-     * */
+
     
     async function setupAndStart() {
         await getCategoryIds()
@@ -184,14 +145,10 @@ async function fillTable() {
         // cluesEvent()
     }
 
-    /** On click of start / restart button, set up game. */
-    
-    // TODO
+
     $("#restart").on("click", setupAndStart);
     
-    /** On page load, add event handler for clicking clues */
-    
-    // TODO
+
     $(async function () {
         setupAndStart();
         $("#board").on("click", "td", handleClick);

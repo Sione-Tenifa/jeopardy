@@ -31,20 +31,6 @@ tr{
   height: 100%;
 } */
 
-.clue-1 {
-  background: red;
-  display: none;
-}
-
-.clue-2 {
-  background: blue;
-  display: none;
-}
-
-.clue-3 {
-  background: green;
-  /* display: none; */
-}
 
 
 table,
